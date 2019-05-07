@@ -20,7 +20,9 @@ RUN apk update && \
 
 COPY . /project
 WORKDIR /project
-RUN conan remote add manu343726 https://api.bintray.com/packages/manu343726/conan-packages
+RUN conan user
+RUN conan remote add bincrafters https://api.bintray.com/conan/bincrafters/public-conan
+RUN conan remote add manu https://api.bintray.com/conan/manu343726/conan-packages
 RUN cmake -DCMAKE_BUILD_TYPE=Release . && make
 
 FROM alpine:latest

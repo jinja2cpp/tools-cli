@@ -12,7 +12,11 @@ set(CMAKE_CXX_STANDARD 17)
 # include(${CMAKE_BINARY_DIR}/conan.cmake)
 include(conan.cmake)
 
-conan_add_remote(NAME manu343726 URL https://api.bintray.com/packages/manu343726/conan-packages)
+
+conan_add_remote(NAME bincrafters INDEX 1
+        URL https://api.bintray.com/conan/bincrafters/public-conan)
+
+conan_add_remote(NAME manu URL https://api.bintray.com/packages/manu343726/conan-packages)
 
 conan_cmake_run(REQUIRES CLI11/1.7.1@cliutils/stable
         jinja2cpp/0.9.1@Manu343726/testing
