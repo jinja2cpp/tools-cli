@@ -15,7 +15,7 @@ include(conan.cmake)
 conan_add_remote(NAME manu343726 URL https://api.bintray.com/packages/manu343726/conan-packages)
 
 conan_cmake_run(REQUIRES CLI11/1.7.1@cliutils/stable
-#        jinja2cpp/0.9.1@Manu343726/testing
+        jinja2cpp/0.9.1@Manu343726/testing
         OPTIONS
         jinja2cpp:shared=False
         BASIC_SETUP CMAKE_TARGETS
