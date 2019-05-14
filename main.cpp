@@ -25,8 +25,8 @@ Use only this section from the configuration
     // Add custom flag that activates help
     auto help = test.add_flag("-h,--help", "Request help");
 
-//    std::string some_option;
-//    test.add_option("-a", some_option, "Some description");
+    std::string some_option;
+    test.add_option("-a", some_option, "Some description");
 
     try {
         test.parse(argc, argv);
@@ -37,7 +37,7 @@ Use only this section from the configuration
         return test.exit(e);
     }
 
-//    std::cout << "Option -a string: " << some_option << std::endl;
+    std::cout << "Option -a string: " << some_option << std::endl;
     return 0;
 }
 
