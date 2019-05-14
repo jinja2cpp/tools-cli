@@ -1,5 +1,4 @@
 [requires]
-CLI11/1.7.1@cliutils/stable
 jinja2cpp/master@andreybronin/testing
 
 [generators]

@@ -1,11 +1,10 @@
-#include "CLI/CLI.hpp"
-
 #include <iostream>
+#include <boost/program_options.hpp>
 
 
 
 int main(int argc, char **argv) {
-    CLI::App test{R"raw(Usage: jinja2 [options] <input template> <input data>
+    std::string help{R"raw(Usage: jinja2 [options] <input template> <input data>
 
 Options:
 --version             show program's version number and exit
@@ -19,25 +18,8 @@ extra jinja2 extensions to load
 Use only this section from the configuration
 --strict              Disallow undefined variables to be used within the template)raw"};
 
-    // Remove help flag because it shortcuts all processing
-    test.set_help_flag();
 
-    // Add custom flag that activates help
-    auto help = test.add_flag("-h,--help", "Request help");
-
-    std::string some_option;
-    test.add_option("-a", some_option, "Some description");
-
-    try {
-        test.parse(argc, argv);
-        if(*help)
-            throw CLI::CallForHelp();
-    } catch(const CLI::Error &e) {
-//        std::cout << "Option -a string in help: " << some_option << std::endl;
-        return test.exit(e);
-    }
-
-    std::cout << "Option -a string: " << some_option << std::endl;
+    std::cout << help << std::endl;
     return 0;
 }
 
