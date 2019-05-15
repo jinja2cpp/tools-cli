@@ -1,6 +1,7 @@
 [requires]
 jinja2cpp/master@andreybronin/testing
 rapidjson/1.1.0@bincrafters/stable
+gtest/1.8.1@bincrafters/stable
 
 [generators]
 cmake
