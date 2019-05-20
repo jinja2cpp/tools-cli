@@ -9,11 +9,9 @@ RUN apk update && \
         g++ \
         build-base \
         cmake \
-#        bash \
         libstdc++ \
         git \
         linux-headers \
-#        cppcheck \
         py-pip && \
         pip install conan && \
     rm -rf /var/cache/apk/*
