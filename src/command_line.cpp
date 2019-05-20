@@ -1,7 +1,6 @@
 #include "command_line.h"
 
 #include <boost/program_options.hpp>
-#include <nlohmann/json.hpp>
 
 #include <iostream>
 #include <memory>
@@ -20,7 +19,7 @@ int CommandLine::Execute(int argc, char* argv[])
             ("help,h", "Display this help message")
             ("version,v", "Display the version number")
             ("format", "Format of input variables: auto, ini, json, yaml, toml")
-            ("input-template", po::value<std::vector<std::string>>(), "Input template file path")
+            ("input-template", po::value<std::string>(), "Input template file path")
             ("input-data", po::value<std::vector<std::string>>(),
              "Define template variable in the form of key=value");
 
@@ -43,18 +42,18 @@ int CommandLine::Execute(int argc, char* argv[])
             return EXIT_SUCCESS;
         }
 
-//        for (auto &v : vm["input-data"].as<std::vector<std::string> >())
-//        {
-//            if (vm.count("input-data")) {
-//                std::cout << "Input data are: ";
-//                std::cout << v << std::endl;
-//            }
-//        }
+        for (auto &v : vm["input-data"].as<std::vector<std::string> >())
+        {
+            if (vm.count("input-data")) {
+                std::cout << "Input data are: ";
+                std::cout << v << std::endl;
+            }
+        }
 
 
         if (vm.count("input-template"))
         {
-            const auto &filename = vm["input-template"].as<std::vector<std::string> >()[0];
+            const auto &filename = vm["input-template"].as<std::string>();
             RenderTemplate(filename);
             return EXIT_SUCCESS;
         }
@@ -91,17 +90,6 @@ void CommandLine::RenderTemplate(const std::string& fileName)
     std::cout << fileName << std::endl;
 
     tpl.Render(std::cout, {});
-}
-
-void parseOptions() {
-    using json = nlohmann::json;
-
-    auto j3 = json::parse("{ \"happy\": true, \"pi\": 3.141 }");
-
-//    document.Parse()
-//
-//    for (auto& v : a.GetArray())
-//        printf("%d ", v.GetInt());
 }
 
 } // namespace jinja2
