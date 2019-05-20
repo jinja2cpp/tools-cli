@@ -1,7 +1,7 @@
 #include "command_line.h"
 
 #include <boost/program_options.hpp>
-#include <rapidjson/document.h>
+#include <nlohmann/json.hpp>
 
 #include <iostream>
 #include <memory>
@@ -11,7 +11,7 @@ namespace jinja2
 
 CommandLine::CommandLine(std::unique_ptr<Template> tpl) : m_tpl(std::move(tpl)) { }
 
-int CommandLine::Execute(int argc, char **argv)
+int CommandLine::Execute(int argc, char* argv[])
 {
     namespace po = boost::program_options;
     po::options_description desc("Options");
@@ -19,7 +19,7 @@ int CommandLine::Execute(int argc, char **argv)
     desc.add_options()
             ("help,h", "Display this help message")
             ("version,v", "Display the version number")
-            ("format", "Format of input variables: auto, ini, json")
+            ("format", "Format of input variables: auto, ini, json, yaml, toml")
             ("input-template", po::value<std::vector<std::string>>(), "Input template file path")
             ("input-data", po::value<std::vector<std::string>>(),
              "Define template variable in the form of key=value");
@@ -93,12 +93,15 @@ void CommandLine::RenderTemplate(const std::string& fileName)
     tpl.Render(std::cout, {});
 }
 
-    void parceOptions() {
-        rapidjson::Document document;
+void parseOptions() {
+    using json = nlohmann::json;
+
+    auto j3 = json::parse("{ \"happy\": true, \"pi\": 3.141 }");
+
 //    document.Parse()
 //
 //    for (auto& v : a.GetArray())
 //        printf("%d ", v.GetInt());
-    }
+}
 
 } // namespace jinja2

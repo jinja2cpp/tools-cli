@@ -1,6 +1,6 @@
 [requires]
 jinja2cpp/master@andreybronin/testing
-rapidjson/1.1.0@bincrafters/stable
+jsonformoderncpp/3.6.1@vthiery/stable
 gtest/1.8.1@bincrafters/stable
 
 [generators]
