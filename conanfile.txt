@@ -1,6 +1,9 @@
 [requires]
 jinja2cpp/master@andreybronin/testing
 jsonformoderncpp/3.6.1@vthiery/stable
+yaml-cpp/0.6.2@bincrafters/stable
+tinytoml/0.4@bincrafters/stable
+
 gtest/1.8.1@bincrafters/stable
 
 [generators]
