@@ -1,4 +1,5 @@
 #include "command_line.h"
+#include "param_resolver.h"
 
 #include <boost/program_options.hpp>
 
@@ -89,7 +90,12 @@ void CommandLine::RenderTemplate(const std::string& fileName)
     std::cout << "Input template is: ";
     std::cout << fileName << std::endl;
 
-    tpl.Render(std::cout, {});
+
+    JsonParamResolver resolver;
+    auto reflectedJson = Reflect(std::move(resolver));
+    ValuesMap vm = {{"root", reflectedJson}};
+
+    tpl.Render(std::cout, vm);
 }
 
 } // namespace jinja2
