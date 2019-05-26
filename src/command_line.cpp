@@ -92,9 +92,8 @@ void CommandLine::RenderTemplate(const std::string& fileName)
 
 
     JsonParamResolver resolver;
-    auto reflectedJson = Reflect(std::move(resolver));
-    ValuesMap vm = {{"root", reflectedJson}};
 
+    ValuesMap vm = resolver.ParamsFromFile("sample.json");
     tpl.Render(std::cout, vm);
 }
 
