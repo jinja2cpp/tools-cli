@@ -1,10 +1,20 @@
 [requires]
-jinja2cpp/master@andreybronin/testing
-jsonformoderncpp/3.6.1@vthiery/stable
-yaml-cpp/0.6.2@bincrafters/stable
+boost/1.71.0
+gtest/1.8.1
+variant-lite/1.2.2
+expected-lite/0.3.0
+optional-lite/3.2.0
+string-view-lite/1.3.0
+fmt/5.3.0
+
+yaml-cpp/0.6.3
+jsonformoderncpp/3.7.0@vthiery/stable
 tinytoml/0.4@bincrafters/stable
 
-gtest/1.8.1@bincrafters/stable
+[options]
+jinja2cpp:shared=False
+gtest:shared=False
+boost:shared=False
 
 [generators]
-cmake
+cmake_find_package
