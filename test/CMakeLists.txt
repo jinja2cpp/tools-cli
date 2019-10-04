@@ -8,6 +8,6 @@ add_executable (${PROJECT_NAME}
         param_resolver_test.cpp
         )
 
-target_link_libraries(${PROJECT_NAME} jinja2cpp::cli gtest::gtest)
+target_link_libraries(${PROJECT_NAME} gtest::gtest jinja2cpp::cli)
 
 add_test(NAME ${PROJECT_NAME} COMMAND ${PROJECT_NAME} --gtest_output=xml)

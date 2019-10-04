@@ -16,14 +16,19 @@ find_package(jsonformoderncpp 3.7.0 REQUIRED)
 find_package(yaml-cpp 0.6.0 REQUIRED)
 #find_package(jinja2cpp REQUIRED)
 
-add_library(jinja2cpp-libcli STATIC
+add_library(jinja2cpp-libcli
         src/command_line.cpp
         src/command_line.h
         src/param_resolver.cpp
         src/param_resolver.h
+        src/yaml_reflector.h
         )
 add_library(jinja2cpp::cli ALIAS jinja2cpp-libcli)
-target_link_libraries(jinja2cpp-libcli jinja2cpp jsonformoderncpp::jsonformoderncpp boost::boost)
+target_link_libraries(jinja2cpp-libcli PUBLIC jinja2cpp
+        jsonformoderncpp::jsonformoderncpp
+        yaml-cpp::yaml-cpp
+        boost::boost
+        )
 
 add_executable(${PROJECT_NAME} src/main.cpp)
 target_link_libraries(${PROJECT_NAME} jinja2cpp::cli)

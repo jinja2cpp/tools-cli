@@ -9,11 +9,14 @@ using namespace jinja2;
 class MockTemplate : public Template
 {
 public:
-    MOCK_METHOD2(Load, ParseResult(const char* tpl, std::string tplName));
-    MOCK_METHOD2(Load, ParseResult(const std::string& str, std::string tplName));
-    MOCK_METHOD2(Load, ParseResult(std::istream& stream, std::string tplName));
+    // Load();
 
-    MOCK_METHOD1(LoadFromFile, ParseResult (const std::string& fileName));
+    MOCK_METHOD2(Load, Result<void> (const char* tpl, std::string tplName));
+
+//    MOCK_METHOD2(Load, ParseResult(const std::string& str, std::string tplName));
+//    MOCK_METHOD2(Load, ParseResult(std::istream& stream, std::string tplName));
+//
+//    MOCK_METHOD1(LoadFromFile, ParseResult (const std::string& fileName));
     MOCK_METHOD2(Render, void (std::ostream& os, const ValuesMap& params));
     MOCK_METHOD1(RenderAsString, std::string (const ValuesMap& params));
 };
