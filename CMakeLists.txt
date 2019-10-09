@@ -16,6 +16,11 @@ find_package(jsonformoderncpp 3.7.0 REQUIRED)
 find_package(yaml-cpp 0.6.0 REQUIRED)
 #find_package(jinja2cpp REQUIRED)
 
+# Generate Version file
+execute_process(COMMAND ${GIT_EXECUTABLE} describe --tags --always OUTPUT_VARIABLE GIT_REPO_VERSION
+        WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/thirdparty/Jinja2Cpp)
+configure_file("version.h.in" "version.h")
+
 add_library(jinja2cpp-libcli
         src/command_line.cpp
         src/command_line_j2.cpp
@@ -25,6 +30,7 @@ add_library(jinja2cpp-libcli
         src/yaml_reflector.h
         )
 add_library(jinja2cpp::cli ALIAS jinja2cpp-libcli)
+target_include_directories(jinja2cpp-libcli PUBLIC ${CMAKE_CURRENT_BINARY_DIR})
 target_link_libraries(jinja2cpp-libcli PUBLIC jinja2cpp
         jsonformoderncpp::jsonformoderncpp
         yaml-cpp::yaml-cpp

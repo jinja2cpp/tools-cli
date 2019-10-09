@@ -1,4 +1,5 @@
 #include "command_line.h"
+#include <version.h>
 
 namespace jinja2
 {
@@ -8,6 +9,7 @@ CommandLineJ2::CommandLineJ2(std::unique_ptr<Template> tpl) : m_tpl(std::move(tp
 int CommandLineJ2::Execute(int argc, char* argv[])
 {
     // todo: implement me
+    return 0;
 }
 
 std::string CommandLineJ2::Help()
@@ -17,8 +19,7 @@ std::string CommandLineJ2::Help()
 
 std::string CommandLineJ2::Version()
 {
-    // TODO: get jinja2cpp version
-    return "unknown";
+    return jinja2cppVersion;
 }
 
 

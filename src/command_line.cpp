@@ -1,5 +1,6 @@
 #include "command_line.h"
 #include "param_resolver.h"
+#include <version.h>
 
 #include <boost/program_options.hpp>
 
@@ -74,8 +75,7 @@ std::string CommandLine::Help()
 
 std::string CommandLine::Version()
 {
-    // TODO: get jinja2cpp version
-    return "unknown";
+    return jinja2cppVersion;
 }
 
 
