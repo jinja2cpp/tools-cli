@@ -69,7 +69,7 @@ int CommandLine::Execute(int argc, char* argv[])
 
 std::string CommandLine::Help()
 {
-    return "Usage: jinja2cpp [options] <input template> <input data>";
+    return "Usage: jinja2cpp-cli [options] <input template> <input data>";
 }
 
 std::string CommandLine::Version()
