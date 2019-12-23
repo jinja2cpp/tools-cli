@@ -1,0 +1,1 @@
+constexpr char jinja2cppVersion[] = R"(Jinja2cpp version: ${GIT_REPO_VERSION})";
